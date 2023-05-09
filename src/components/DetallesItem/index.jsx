@@ -1,16 +1,17 @@
 
 import ContadorItem from '../ContadorItem'
-const DetallesItem = ({ id, name, img, category, description, price, stock }) => {
+
+const DetallesItem = ({ id, nombre, img, category, description, precioBase, stock }) => {
     return (
         <article className="CardItem">
             <header className="Header">
                 <h2 className="ItemHeader">
-                    {name}
+                    {nombre}
                 </h2>
             </header>
             <picture>
             </picture> O
-            <img src={img} alt={name} className="ItemImg" />
+            <img src={img} alt={nombre} className="ItemImg" />
             <section>
                 <p className="Info">
                     Categoria: {category}
@@ -19,11 +20,11 @@ const DetallesItem = ({ id, name, img, category, description, price, stock }) =>
                     Descripción: {description}
                 </p>
                 <p className="Info">
-                    Precio: ${price}
+                    Precio: ${precioBase}
                 </p>
             </section>
             <footer className='ItemFooter'>
-                <ContadorItem initial={1} stock={stock} onAdd={(cantidad) => console.log('Cantidad agregada')} />
+                <ContadorItem initial={1} min={0} max={stock} stock={stock} onAdd={(cantidad) => console.log('Cantidad agregada')} />
             </footer>
         </article>
     )

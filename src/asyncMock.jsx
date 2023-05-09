@@ -6,6 +6,7 @@ const productos = [
         id: 1,
         nombre: "Paquete A",
         cantidad: 1,
+        category: "Pollo",
         descripcion: `1 whole Chicken
         1 chopped Tomato
         2 chopped Onions
@@ -27,6 +28,7 @@ const productos = [
         id: 2,
         nombre: "Paquete B",
         cantidad: 1,
+        category: "Cerdo",
         descripcion: `1.5 pounds sliced Pork
         1 package thin Rice Vermicelli
         4-6 Egg Rolls
@@ -48,6 +50,7 @@ const productos = [
         id: 3,
         nombre: "Paquete C",
         cantidad: 1,
+        category: "Res",
         descripcion: `8 slices Beef
         12 florets Broccoli
         1 Packet Potatoes
@@ -77,3 +80,12 @@ export const getProductoPorId = (idProducto) => {
         }, 500);
     });
 };
+
+export const getProductsByCategory = (categoryId) => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(productos.find(prod => prod.category === categoryId));
+        }, 500);
+    });
+};
+

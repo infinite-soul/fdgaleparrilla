@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { getProductoPorId } from '../../asyncMock';
 import DetallesItem from '../DetallesItem';
 import { useParams } from 'react-router-dom';
+import { getProductsByCategory } from '../../asyncMock';
 
 
 const ContenedorDetallesItem = () => {
@@ -18,7 +19,7 @@ const ContenedorDetallesItem = () => {
             .catch(error => {
                 console.error(error)
             })
-    }, [])
+    }, [itemId])
     return (
         <div className='ContenedorDetallesItem'>
             <DetallesItem {...producto} />

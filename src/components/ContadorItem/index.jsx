@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../App.css";
 
 const ContadorItem = ({ inicial, stock, agregar }) => {
@@ -13,12 +13,16 @@ const ContadorItem = ({ inicial, stock, agregar }) => {
         cantidad > 1 && setCantidad(cantidad - 1);
     };
 
+    useEffect(() => {
+        setCantidad(cantidad);
+    }, [cantidad, setCantidad]);
+
     return (
         <div className="Contador">
             <div className="Controles">
-                <button className="Button" onClick={disminuirCantidad}>-</button>
+                <button disabled={cantidad <= 1} className="Button" onClick={disminuirCantidad}>-</button>
                 <h4 className="NumeroArticulos">{cantidad}</h4>
-                <button className="Button" onClick={aumentarCantidad}>+</button>
+                <button disabled={cantidad >= stock} className="Button" onClick={aumentarCantidad}>+</button>
             </div>
             <div>
                 <button

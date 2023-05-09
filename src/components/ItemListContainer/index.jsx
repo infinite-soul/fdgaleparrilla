@@ -4,36 +4,20 @@ import { useState, useEffect } from "react";
 import ListaItems from "../ListaItems";
 import { useParams } from 'react-router-dom';
 
-
 const ItemListContainer = () => {
-    const [productos, setearProductos] = useState([])
-
-    const { categoryId } = useParams()
+    const [productos, setearProductos] = useState([]);
+    const { categoryId } = useParams();
 
     useEffect(() => {
-        const asyncFunc = categoryId ? getProductsByCategory : getProductos
+        const asyncFunc = categoryId ? getProductsByCategory : getProductos;
         asyncFunc(categoryId)
             .then(response => {
-                setearProductos(response)
+                setearProductos(response);
             })
             .catch(error => {
-                console.error(error)
-            })
-    }, [categoryId])
-
-
-
-    useEffect(() => {
-        getProductos()
-            .then(response => {
-                setearProductos(response)
-            })
-            .catch(error => {
-                console.error(error)
-            })
-    })
-
-
+                console.error(error);
+            });
+    }, [categoryId]);
 
     return (
         <>
