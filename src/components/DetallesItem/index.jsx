@@ -1,7 +1,14 @@
-
 import ContadorItem from '../ContadorItem'
+import { useState } from 'react'
 
-const DetallesItem = ({ id, nombre, img, category, description, precioBase, stock }) => {
+
+const DetallesItem = ({ idProducto, nombre, img, category, description, precioBase, stock }) => {
+    const [cantidad, setCantidad] = useState(1)
+
+    const agregarAlCarrito = (nuevaCantidad) => {
+        setCantidad(nuevaCantidad)
+    }
+
     return (
         <article className="CardItem">
             <header className="Header">
@@ -10,7 +17,7 @@ const DetallesItem = ({ id, nombre, img, category, description, precioBase, stoc
                 </h2>
             </header>
             <picture>
-            </picture> O
+            </picture> 
             <img src={img} alt={nombre} className="ItemImg" />
             <section>
                 <p className="Info">
@@ -24,7 +31,7 @@ const DetallesItem = ({ id, nombre, img, category, description, precioBase, stoc
                 </p>
             </section>
             <footer className='ItemFooter'>
-                <ContadorItem initial={1} min={0} max={stock} stock={stock} onAdd={(cantidad) => console.log('Cantidad agregada')} />
+                <ContadorItem inicial={1} min={0} max={stock} stock={stock} onAdd={agregarAlCarrito} />
             </footer>
         </article>
     )

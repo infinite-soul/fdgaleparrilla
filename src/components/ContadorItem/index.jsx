@@ -1,8 +1,7 @@
-
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../../App.css";
 
-const ContadorItem = ({ inicial, stock, agregar }) => {
+const ContadorItem = ({ inicial, stock, onAdd }) => {
     const [cantidad, setCantidad] = useState(inicial);
 
     const aumentarCantidad = () => {
@@ -13,26 +12,22 @@ const ContadorItem = ({ inicial, stock, agregar }) => {
         cantidad > 1 && setCantidad(cantidad - 1);
     };
 
-    useEffect(() => {
-        setCantidad(cantidad);
-    }, [cantidad, setCantidad]);
+    const agregarAlCarrito = () => {
+        onAdd(cantidad);
+    };
 
     return (
-        <div className="Contador">
-            <div className="Controles">
-                <button disabled={cantidad <= 1} className="Button" onClick={disminuirCantidad}>-</button>
-                <h4 className="NumeroArticulos">{cantidad}</h4>
-                <button disabled={cantidad >= stock} className="Button" onClick={aumentarCantidad}>+</button>
-            </div>
-            <div>
-                <button
-                    className="Button"
-                    onClick={() => agregar(cantidad)}
-                    disabled={!stock}
-                >
-                    Agregar al carrito
-                </button>
-            </div>
+        <div className="ContadorItem">
+            <button className="BtnContador" onClick={disminuirCantidad}>
+                -
+            </button>
+            <p className="Cantidad">{cantidad}</p>
+            <button className="BtnContador" onClick={aumentarCantidad}>
+                +
+            </button>
+            <button className="BtnAgregar" onClick={agregarAlCarrito}>
+                Agregar al carrito
+            </button>
         </div>
     );
 };

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import ListaItems from "../ListaItems";
 import { useParams } from 'react-router-dom';
 
+
 const ItemListContainer = () => {
     const [productos, setearProductos] = useState([]);
     const { categoryId } = useParams();

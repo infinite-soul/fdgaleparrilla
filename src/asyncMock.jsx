@@ -6,6 +6,7 @@ const productos = [
         id: 1,
         nombre: "Paquete A",
         cantidad: 1,
+        stock: 6,
         category: "Pollo",
         descripcion: `1 whole Chicken
         1 chopped Tomato
@@ -28,6 +29,7 @@ const productos = [
         id: 2,
         nombre: "Paquete B",
         cantidad: 1,
+        stock: 9,
         category: "Cerdo",
         descripcion: `1.5 pounds sliced Pork
         1 package thin Rice Vermicelli
@@ -50,6 +52,7 @@ const productos = [
         id: 3,
         nombre: "Paquete C",
         cantidad: 1,
+        stock: 3,
         category: "Res",
         descripcion: `8 slices Beef
         12 florets Broccoli
@@ -76,7 +79,7 @@ export const getProductos = () => {
 export const getProductoPorId = (idProducto) => {
     return new Promise((resolve) => {
         setTimeout(() => {
-            resolve(productos.find(prod => prod.id === idProducto));
+            resolve(productos.find(prod => prod.nombre === idProducto));
         }, 500);
     });
 };
