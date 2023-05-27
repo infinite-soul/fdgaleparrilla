@@ -1,0 +1,34 @@
+.imagen{
+    max-width:100%;
+}
+
+a{
+    cursor:pointer;
+}
+
+body{
+    background-color: #E3D8D6;
+    overflow-x: hidden;
+}
+.CardItem{
+    display:flex;
+    align-items: center;
+    gap:2rem;
+}
+.ItemImg{
+    width:200px;
+    padding:20px;
+} 
+.contenido{
+    background-color: #E3D8D6;
+}
+.parrafo{
+    font-weight: 900;
+}
+
+a{
+    text-decoration: none;
+}
+.boton{
+    opacity:0;
+}

@@ -1,0 +1,7 @@
+.parrafo{
+    font-weight: 900;
+}
+footer p{
+    display: flex;
+    justify-content: flex-end;
+}

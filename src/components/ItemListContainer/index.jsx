@@ -1,31 +1,51 @@
-import Titulo from "../Titulo";
-import { getProductos, getProductsByCategory } from "../../asyncMock";
-import { useState, useEffect } from "react";
-import ListaItems from "../ListaItems";
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import ItemList from "../ItemList";
+import Title from "../Title";
+import {
+	collection,
+	getDocs,
+	getFirestore,
+	query,
+	where,
+} from "firebase/firestore";
 
+// 1- Traer el servicio de firestore
+// 2- Crear un puntero al dato que queremos traer
+// 3- Traer el dato con una promesa
 
-const ItemListContainer = (props) => {
-    const [productos, setearProductos] = useState([]);
-    const { category } = useParams();
+export const ItemListContainer = ({ texto }) => {
+	const [data, setData] = useState([]);
+	const { categoriaId } = useParams();
 
-    useEffect(() => {
-        const asyncFunc = category ? getProductsByCategory : getProductos;
-        asyncFunc(category)
-            .then(response => {
-                setearProductos(response);
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    }, [category]);
+	useEffect(() => {
+		const querydb = getFirestore();
+		const queryCollection = collection(querydb, "products");
+		if (categoriaId) {
+			const queryFilter = query(
+				queryCollection,
+				where("category", "==", categoriaId),
+			);
+			getDocs(queryFilter).then((res) =>
+				setData(
+					res.docs.map((product) => ({ id: product.id, ...product.data() })),
+				),
+			);
+		} else {
+			getDocs(queryCollection).then((res) =>
+				setData(
+					res.docs.map((product) => ({ id: product.id, ...product.data() })),
+				),
+			);
+		}
+	}, [categoriaId]);
 
-    return (
-        <>
-            <Titulo bienvenida={props.texto} />
-            <ListaItems productos={productos} />
-        </>
-    );
-}
+	return (
+		<>
+			<Title greeting={texto} />
+			<ItemList data={data} />
+		</>
+	);
+};
 
 export default ItemListContainer;

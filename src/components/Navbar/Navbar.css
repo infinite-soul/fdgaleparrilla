@@ -4,5 +4,7 @@ nav {
 
 header ul {
     list-style-type: none;
+    
 }
-
+.nav__link:hover {
+    color: #e0c4b9; }

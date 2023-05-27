@@ -115,10 +115,10 @@ i {
 
 /*Footer*/
 footer {
-  background-color: #652120;
+
   display: flex;
   flex-direction: column;
-  color: #ffb0b0; }
+   }
   footer ul li {
     list-style-type: none; }
     footer ul li a {
