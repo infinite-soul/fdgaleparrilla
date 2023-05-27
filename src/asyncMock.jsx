@@ -76,18 +76,18 @@ export const getProductos = () => {
     });
 };
 
-export const getProductoPorId = (idProducto) => {
+export const getProductoPorId = (id) => {
     return new Promise((resolve) => {
         setTimeout(() => {
-            resolve(productos.find(prod => prod.nombre === idProducto));
+            resolve(productos.find(prod => prod.nombre === id));
         }, 500);
     });
 };
 
-export const getProductsByCategory = (categoryId) => {
+export const getProductsByCategory = (category) => {
     return new Promise((resolve) => {
         setTimeout(() => {
-            resolve(productos.find(prod => prod.category === categoryId));
+            resolve(productos.find(prod => prod.category === category));
         }, 500);
     });
 };
