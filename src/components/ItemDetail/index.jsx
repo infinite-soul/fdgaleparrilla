@@ -36,7 +36,7 @@ export const ItemDetail = ({ data }) => {
 				{goToCart ? (
 					<Link className="link-danger" to="/cart"> Ver carrito</Link>
 				) : (
-					<ItemCount initial={1} stock={5} onAdd={onAdd} />
+					<ItemCount initial={1} stock={data.stock} onAdd={onAdd} />
 				)}
 			</footer>
 
