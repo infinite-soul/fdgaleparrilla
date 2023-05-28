@@ -17,22 +17,22 @@ const NavBar = () => {
 			</div>
 			<ul className="navbar-nav ms-auto font-weight fs-5">
 				<li className="link_nav nav-item nav-link">
-					<NavLink className="link_nav" to="/categoria/Pollo">
+					<NavLink className="link_nav_h" to="/categoria/Pollo">
 						Pollo
 					</NavLink>
 				</li>
 				<li className="link_nav nav-item nav-link">
-					<NavLink className="link_nav" to="/categoria/Cerdo">
+					<NavLink className="link_nav_h" to="/categoria/Cerdo">
 						Cerdo
 					</NavLink>
 				</li>
 				<li className="link_nav nav-item nav-link">
-					<NavLink className="link_nav" to="/categoria/Res">
+					<NavLink className="link_nav_h" to="/categoria/Res">
 						Res
 					</NavLink>
 				</li>
 				<li className="link_nav nav-item nav-link">
-					<NavLink className="link_nav" to="cart">
+					<NavLink className="link_nav_h" to="cart">
 						<CartWidget />
 					</NavLink>
 				</li>
